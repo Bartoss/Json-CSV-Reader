@@ -20,13 +20,13 @@ import java.util.logging.Logger;
 
 public class ReaderCSV {
 
-    private static final String SAMPLE_CSV_FILE_PATH = "/Users/bartekMacBookPro/Downloads/Java-JSON-CSV-Reader/src/main/resources/employees.csv";
+
     private ArrayList<Employee> employeeArrayList = new ArrayList<>();
 
     @SuppressWarnings("unchecked")
-    public ArrayList<Employee> readCSV(){
+    public ArrayList<Employee> readCSV(String pathToFile){
         try
-                (Reader reader = Files.newBufferedReader(Paths.get(SAMPLE_CSV_FILE_PATH)))
+                (Reader reader = Files.newBufferedReader(Paths.get(pathToFile)))
         {
             CsvToBean<Employee> csvToBean = new CsvToBeanBuilder(reader).withType(Employee.class).withIgnoreLeadingWhiteSpace(true).withSeparator(';').build();
             Iterator<Employee> csvEmployeeIterator = csvToBean.iterator();
@@ -34,11 +34,12 @@ public class ReaderCSV {
             while(csvEmployeeIterator.hasNext()){
                 csvEmployeeIterator.forEachRemaining(person ->{
                     Employee employee = new Employee();
-                    employee.setSurname(person.getSurname().replaceAll("\"", ""));
+                    employee.setSurname(person.getSurname().replaceAll("\"", "").trim());
                     employee.setId(person.getId());
-                    employee.setName(person.getSurname().replaceAll("\"", ""));
-                    employee.setJob(person.getJob().replaceAll("\"", ""));
-                    employee.setSalary(person.getSalary().replaceAll("\"", ""));
+                    employee.setName(person.getName().replaceAll("\"", "").trim());
+                    employee.setJob(person.getJob().replaceAll("\"", "").trim());
+                    String salary = person.getSalary().replaceAll("\"", "");
+                    employee.setSalary(salary.replaceAll(",","."));
                     employeeArrayList.add(employee);
                 });
             }
