@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class CalculateSalary {
 
-    public static void calculations(ArrayList<Employee> employeeArrayList){
+    public HashMap<String, Float> calculations(ArrayList<Employee> employeeArrayList){
         ArrayList<Employee> employees;
         employees = employeeArrayList;
         HashMap<String, Float> salaryMap = new HashMap<>();
@@ -23,9 +23,6 @@ public class CalculateSalary {
             }
 
         });
-        salaryMap.forEach((k,v) ->{
-            System.out.println("k: " + k + " v:" + v);
-        });
-
+        return salaryMap;
     }
 }

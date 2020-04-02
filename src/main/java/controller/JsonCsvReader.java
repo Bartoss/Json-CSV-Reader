@@ -1,23 +1,34 @@
 package controller;
 
 import model.Employee;
+import service.CalculateSalary;
 import service.ReaderCSV;
 import service.ReaderJSON;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-
-import static service.CalculateSalary.calculations;
 
 public class JsonCsvReader {
+
+    private final static String pathJson = "/Users/bartekMacBookPro/Documents/Json-CSV-Reader/src/main/resources/files/employees.json";
+    private final static String pathCsv = "/Users/bartekMacBookPro/Documents/Json-CSV-Reader/src/main/resources/files/employees.csv";
 
     public static void main(String[] args){
         ReaderCSV readerCSV = new ReaderCSV();
         ReaderJSON readerJSON = new ReaderJSON();
+        CalculateSalary calculateSalary = new CalculateSalary();
+        HashMap<String, Float> salaryMap;
+
         System.out.println("===Calculations from CSV file===");
-        calculations(readerCSV.readCSV("/Users/bartekMacBookPro/Downloads/Java-JSON-CSV-Reader/src/main/resources/employees.csv"));
+        salaryMap = calculateSalary.calculations(readerCSV.readCSV(pathCsv));
+        printValues(salaryMap);
+        salaryMap = null;
         System.out.println("===Calculations from JSON file===");
-        calculations(readerJSON.readJSON("/Users/bartekMacBookPro/Documents/Json-CSV-Reader/src/main/resources/employees.json"));
+        salaryMap = calculateSalary.calculations(readerJSON.readJSON(pathJson));
+        printValues(salaryMap);
+    }
+
+    public static void printValues(HashMap<String, Float> salaryMap){
+        salaryMap.forEach((k,v) ->{
+            System.out.println(k + " - " + v);
+        });
     }
 }
