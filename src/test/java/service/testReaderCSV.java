@@ -2,11 +2,13 @@ package service;
 
 import model.Employee;
 import org.junit.Test;
-import static org.junit.Assert.*;
+
 import java.util.ArrayList;
 
+import static org.junit.Assert.assertEquals;
+
 public class testReaderCSV {
-    private final static String pathCsv = "/Users/bartekMacBookPro/Documents/Json-CSV-Reader/src/main/resources/files/employees.csv";
+    private final static String pathCsv = "files/employees.csv";
     private ArrayList<Employee> employeeArrayList = new ArrayList<>();
     private ReaderCSV readerCSV = new ReaderCSV();
     @Test

@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 
 public class testReaderJSON {
 
-    private final static String pathJson = "/Users/bartekMacBookPro/Documents/Json-CSV-Reader/src/main/resources/files/employees.json";
+    private final static String pathJson = "files/employees.json";
 
     private ArrayList<Employee> employeeArrayList = new ArrayList<>();
     private ReaderJSON readerJSON = new ReaderJSON();
