@@ -1,9 +1,9 @@
 package controller;
 
-import model.Employee;
 import service.CalculateSalary;
 import service.ReaderCSV;
 import service.ReaderJSON;
+
 import java.util.HashMap;
 
 public class JsonCsvReader {

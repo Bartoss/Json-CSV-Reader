@@ -12,14 +12,14 @@ public class CalculateSalary {
         employees = employeeArrayList;
         HashMap<String, Float> salaryMap = new HashMap<>();
         employees.forEach(employee -> {
-            float salary;
-            salary = Float.parseFloat(employee.getSalary());
-            if(salaryMap.containsKey(employee.getJob())){
-                float tmp = salaryMap.get(employee.getJob());
-                tmp += salary;
-                salaryMap.replace(employee.getJob(),tmp);
-            }else {
-                salaryMap.put(employee.getJob(),salary);
+            float tmp;
+            tmp = Float.parseFloat(employee.getSalary());
+            if (salaryMap.containsKey(employee.getJob())) {
+                float salary = salaryMap.get(employee.getJob());
+                salary += tmp;
+                salaryMap.replace(employee.getJob(), salary);
+            } else {
+                salaryMap.put(employee.getJob(), tmp);
             }
 
         });

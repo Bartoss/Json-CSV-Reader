@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class Employee {
 
     private Integer id;
@@ -48,4 +50,20 @@ public class Employee {
         this.salary = salary;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Employee)) return false;
+        Employee employee = (Employee) o;
+        return getId().equals(employee.getId()) &&
+                Objects.equals(getName(), employee.getName()) &&
+                Objects.equals(getSurname(), employee.getSurname()) &&
+                Objects.equals(getJob(), employee.getJob()) &&
+                Objects.equals(getSalary(), employee.getSalary());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getSurname(), getJob(), getSalary());
+    }
 }
