@@ -6,8 +6,8 @@ import java.util.HashMap;
 
 public class FireReaderImpl implements FireReader {
 
-    private final static String pathJson = "/Users/bartekMacBookPro/Documents/Json-CSV-Reader/src/main/resources/files/employees.json";
-    private final static String pathCsv = "/Users/bartekMacBookPro/Documents/Json-CSV-Reader/src/main/resources/files/employees.csv";
+    private final static String pathJson = "files/employees.json";
+    private final static String pathCsv = "files/employees.csv";
 
     public void setup(String[] args) {
         ReaderCsvImpl readerCsvImpl = new ReaderCsvImpl();
