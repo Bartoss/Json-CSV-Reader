@@ -1,9 +1,10 @@
-package service;
+package service.impl;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import model.Employee;
 import model.Example;
+import service.ReaderJson;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ReaderJSON {
+public class ReaderJsonImpl implements ReaderJson {
     private ArrayList<Employee> employeeArrayList = new ArrayList<>();
 
     public List<Employee> readJSON(String pathToFile) {
@@ -31,7 +32,7 @@ public class ReaderJSON {
                 employeeArrayList.add(employee);
             });
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(ReaderJSON.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ReaderJsonImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return employeeArrayList;
     }

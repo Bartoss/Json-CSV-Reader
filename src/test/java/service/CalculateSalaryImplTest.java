@@ -2,16 +2,19 @@ package service;
 
 import model.Employee;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import service.impl.CalculateSalaryImpl;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class CalculateSalaryTest {
+import static org.junit.Assert.assertTrue;
+
+public class CalculateSalaryImplTest {
 
     @Test
-    public void testCalculations() throws Exception{
+    public void testCalculations() throws Exception {
         ArrayList<Employee> employeeArrayList = new ArrayList<>();
-        CalculateSalary calculateSalary = new CalculateSalary();
+        CalculateSalaryImpl calculateSalaryImpl = new CalculateSalaryImpl();
         HashMap<String, Float> salaryMap;
 
         Employee driver1 = new Employee();
@@ -32,7 +35,7 @@ public class CalculateSalaryTest {
         chef.setSalary("1379.02");
         employeeArrayList.add(chef);
 
-        salaryMap = calculateSalary.calculations(employeeArrayList);
+        salaryMap = calculateSalaryImpl.calculations(employeeArrayList);
 
         ///////////////////////////////////////////////////////////////////
         float value = salaryMap.get(chef.getJob());

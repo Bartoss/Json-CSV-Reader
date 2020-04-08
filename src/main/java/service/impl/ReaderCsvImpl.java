@@ -1,8 +1,9 @@
-package service;
+package service.impl;
 
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import model.Employee;
+import service.ReaderCsv;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -14,7 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class ReaderCSV {
+public class ReaderCsvImpl implements ReaderCsv {
 
     private ArrayList<Employee> employeeArrayList = new ArrayList<>();
     private BufferedReader bufferedReader = null;
@@ -39,7 +40,7 @@ public class ReaderCSV {
                 });
             }
         } catch (FileNotFoundException e) {
-            Logger.getLogger(ReaderCSV.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(ReaderCsvImpl.class.getName()).log(Level.SEVERE, null, e);
         }
         return employeeArrayList;
     }
