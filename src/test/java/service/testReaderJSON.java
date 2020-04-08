@@ -4,6 +4,7 @@ import model.Employee;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,7 +12,7 @@ public class testReaderJSON {
 
     private final static String pathJson = "files/employees.json";
 
-    private ArrayList<Employee> employeeArrayList = new ArrayList<>();
+    private List<Employee> employeeArrayList = new ArrayList<>();
     private ReaderJSON readerJSON = new ReaderJSON();
 
     @Test

@@ -1,22 +1,24 @@
 package service;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import model.Employee;
 import model.Example;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class ReaderJSON {
     private ArrayList<Employee> employeeArrayList = new ArrayList<>();
-    public ArrayList<Employee> readJSON(String pathToFile) {
+
+    public List<Employee> readJSON(String pathToFile) {
         try {
             Gson gson = new GsonBuilder().create();
-            Example ourClass = null;
+            Example ourClass;
             ourClass = gson.fromJson(new FileReader(pathToFile), Example.class);
 
             ourClass.getEmployees().forEach(person -> {
@@ -28,12 +30,8 @@ public class ReaderJSON {
                 employee.setSalary(person.getSalary().replaceAll(",","."));
                 employeeArrayList.add(employee);
             });
-
-
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ReaderJSON.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-
         }
         return employeeArrayList;
     }

@@ -4,12 +4,13 @@ import model.Employee;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
 public class testReaderCSV {
     private final static String pathCsv = "files/employees.csv";
-    private ArrayList<Employee> employeeArrayList = new ArrayList<>();
+    private List<Employee> employeeArrayList = new ArrayList<>();
     private ReaderCSV readerCSV = new ReaderCSV();
     @Test
     public void testReadCSV(){

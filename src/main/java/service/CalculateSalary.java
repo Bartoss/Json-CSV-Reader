@@ -2,13 +2,13 @@ package service;
 
 import model.Employee;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class CalculateSalary {
 
-    public HashMap<String, Float> calculations(ArrayList<Employee> employeeArrayList){
-        ArrayList<Employee> employees;
+    public HashMap<String, Float> calculations(List<Employee> employeeArrayList) {
+        List<Employee> employees;
         employees = employeeArrayList;
         HashMap<String, Float> salaryMap = new HashMap<>();
         employees.forEach(employee -> {

@@ -7,9 +7,9 @@ import model.Employee;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,7 +18,8 @@ public class ReaderCSV {
 
     private ArrayList<Employee> employeeArrayList = new ArrayList<>();
     private BufferedReader bufferedReader = null;
-    public ArrayList<Employee> readCSV(String pathToFile) {
+
+    public List<Employee> readCSV(String pathToFile) {
 
         try {
             bufferedReader = new BufferedReader(new FileReader(pathToFile));
@@ -38,8 +39,6 @@ public class ReaderCSV {
                 });
             }
         } catch (FileNotFoundException e) {
-            Logger.getLogger(ReaderCSV.class.getName()).log(Level.SEVERE, null, e);
-        } catch (IOException e) {
             Logger.getLogger(ReaderCSV.class.getName()).log(Level.SEVERE, null, e);
         }
         return employeeArrayList;
