@@ -1,48 +1,44 @@
 package service;
 
-import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
-import com.opencsv.exceptions.CsvValidationException;
 import model.Employee;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
 public class ReaderCSV {
 
-
     private ArrayList<Employee> employeeArrayList = new ArrayList<>();
+    private BufferedReader bufferedReader = null;
+    public ArrayList<Employee> readCSV(String pathToFile) {
 
-    @SuppressWarnings("unchecked")
-    public ArrayList<Employee> readCSV(String pathToFile){
-        try
-                (Reader reader = Files.newBufferedReader(Paths.get(pathToFile)))
-        {
-            CsvToBean<Employee> csvToBean = new CsvToBeanBuilder(reader).withType(Employee.class).withIgnoreLeadingWhiteSpace(true).withSeparator(';').build();
+        try {
+            bufferedReader = new BufferedReader(new FileReader(pathToFile));
+            CsvToBean<Employee> csvToBean = new CsvToBeanBuilder(bufferedReader).withType(Employee.class).withIgnoreLeadingWhiteSpace(true).withSeparator(';').build();
             Iterator<Employee> csvEmployeeIterator = csvToBean.iterator();
 
-            while(csvEmployeeIterator.hasNext()){
-                csvEmployeeIterator.forEachRemaining(person ->{
+            while (csvEmployeeIterator.hasNext()) {
+                csvEmployeeIterator.forEachRemaining(person -> {
                     Employee employee = new Employee();
                     employee.setSurname(person.getSurname().replaceAll("\"", "").trim());
                     employee.setId(person.getId());
                     employee.setName(person.getName().replaceAll("\"", "").trim());
                     employee.setJob(person.getJob().replaceAll("\"", "").trim());
                     String salary = person.getSalary().replaceAll("\"", "");
-                    employee.setSalary(salary.replaceAll(",","."));
+                    employee.setSalary(salary.replaceAll(",", "."));
                     employeeArrayList.add(employee);
                 });
             }
+        } catch (FileNotFoundException e) {
+            Logger.getLogger(ReaderCSV.class.getName()).log(Level.SEVERE, null, e);
         } catch (IOException e) {
             Logger.getLogger(ReaderCSV.class.getName()).log(Level.SEVERE, null, e);
         }

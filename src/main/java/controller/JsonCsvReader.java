@@ -8,8 +8,8 @@ import java.util.HashMap;
 
 public class JsonCsvReader {
 
-    private final static String pathJson = "files/employees.json";
-    private final static String pathCsv = "files/employees.csv";
+    private final static String pathJson = "/Users/bartekMacBookPro/Documents/Json-CSV-Reader/src/main/resources/files/employees.json";
+    private final static String pathCsv = "/Users/bartekMacBookPro/Documents/Json-CSV-Reader/src/main/resources/files/employees.csv";
 
     public static void main(String[] args) {
         ReaderCSV readerCSV = new ReaderCSV();
