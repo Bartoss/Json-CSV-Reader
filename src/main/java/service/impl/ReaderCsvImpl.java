@@ -3,7 +3,7 @@ package service.impl;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import model.Employee;
-import service.ReaderCsv;
+import service.FormatReader;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -15,12 +15,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class ReaderCsvImpl implements ReaderCsv {
+public class ReaderCsvImpl implements FormatReader {
 
     private ArrayList<Employee> employeeArrayList = new ArrayList<>();
     private BufferedReader bufferedReader = null;
 
-    public List<Employee> readCSV(String pathToFile) {
+    public List<Employee> readFormat(String pathToFile) {
 
         try {
             bufferedReader = new BufferedReader(new FileReader(pathToFile));

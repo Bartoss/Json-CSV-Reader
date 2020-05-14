@@ -24,7 +24,7 @@ public class testReaderJsonImpl {
         employee.setName("Mark");
         employee.setJob("Teacher");
 
-        employeeArrayList = readerJsonImpl.readJSON(pathJson);
+        employeeArrayList = readerJsonImpl.readFormat(pathJson);
 
         assertEquals(employee.getName(), employeeArrayList.get(0).getName());
 

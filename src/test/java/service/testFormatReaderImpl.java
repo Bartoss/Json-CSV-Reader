@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class testReaderCsvImpl {
+public class testFormatReaderImpl {
     private final static String pathCsv = "files/employees.csv";
     private List<Employee> employeeArrayList = new ArrayList<>();
     private ReaderCsvImpl readerCsvImpl = new ReaderCsvImpl();
@@ -22,7 +22,7 @@ public class testReaderCsvImpl {
         employee.setName("Mark");
         employee.setJob("Teacher");
 
-        employeeArrayList = readerCsvImpl.readCSV(pathCsv);
+        employeeArrayList = readerCsvImpl.readFormat(pathCsv);
 
         assertEquals(employee.getName(), employeeArrayList.get(0).getName());
 

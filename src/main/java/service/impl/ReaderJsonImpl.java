@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import model.Employee;
 import model.Example;
-import service.ReaderJson;
+import service.FormatReader;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -13,10 +13,10 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ReaderJsonImpl implements ReaderJson {
+public class ReaderJsonImpl implements FormatReader {
     private ArrayList<Employee> employeeArrayList = new ArrayList<>();
 
-    public List<Employee> readJSON(String pathToFile) {
+    public List<Employee> readFormat(String pathToFile) {
         try {
             Gson gson = new GsonBuilder().create();
             Example ourClass;

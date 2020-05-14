@@ -15,10 +15,10 @@ public class FireReaderImpl implements FireReader {
         CalculateSalaryImpl calculateSalaryImpl = new CalculateSalaryImpl();
         HashMap<String, Float> salaryMap;
         System.out.println("===Calculations from CSV file===");
-        salaryMap = calculateSalaryImpl.calculations(readerCsvImpl.readCSV(pathCsv));
+        salaryMap = calculateSalaryImpl.calculations(readerCsvImpl.readFormat(pathCsv));
         printValues(salaryMap);
         System.out.println("===Calculations from JSON file===");
-        salaryMap = calculateSalaryImpl.calculations(readerJsonImpl.readJSON(pathJson));
+        salaryMap = calculateSalaryImpl.calculations(readerJsonImpl.readFormat(pathJson));
         printValues(salaryMap);
     }
 
